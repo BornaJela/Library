@@ -1,0 +1,452 @@
+[
+    {
+        "naslov": "Na Drini ćuprija",
+        "autor_ime": "Ivo",
+        "autor_prezime": "Andrić",
+        "zanr_naziv": "Roman",
+        "godina": 1945,
+        "opis": "Roman o mostu na Drini i ljudima koji su živjeli oko njega kroz 400 godina.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Prokleta avlija",
+        "autor_ime": "Ivo",
+        "autor_prezime": "Andrić",
+        "zanr_naziv": "Roman",
+        "godina": 1954,
+        "opis": "Priča o mističnom dvorištu u Istanbulu i ljudima zatočenim u njemu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Travnička hronika",
+        "autor_ime": "Ivo",
+        "autor_prezime": "Andrić",
+        "zanr_naziv": "Roman",
+        "godina": 1945,
+        "opis": "Roman o francuskom konzulu u Travniku za vrijeme Napoleonovih ratova.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Povratak Filipa Latinovicza",
+        "autor_ime": "Miroslav",
+        "autor_prezime": "Krleža",
+        "zanr_naziv": "Roman",
+        "godina": 1932,
+        "opis": "Roman o umjetniku koji se vraća u svoj rodni grad.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Banket u Blitvi",
+        "autor_ime": "Miroslav",
+        "autor_prezime": "Krleža",
+        "zanr_naziv": "Roman",
+        "godina": 1938,
+        "opis": "Politički roman o izmišljenoj baltičkoj zemlji.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Zastave",
+        "autor_ime": "Miroslav",
+        "autor_prezime": "Krleža",
+        "zanr_naziv": "Roman",
+        "godina": 1962,
+        "opis": "Pet knjiga o životu hrvatskog plemstva.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Gospoda Glembajevi",
+        "autor_ime": "Miroslav",
+        "autor_prezime": "Krleža",
+        "zanr_naziv": "Drama",
+        "godina": 1928,
+        "opis": "Drama o propadanju bogate zagrebačke obitelji.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Kiklop",
+        "autor_ime": "Ranko",
+        "autor_prezime": "Marinković",
+        "zanr_naziv": "Roman",
+        "godina": 1965,
+        "opis": "Roman o mladiću koji bježi od regrutacije u predratnom Zagrebu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Derviš i smrt",
+        "autor_ime": "Meša",
+        "autor_prezime": "Selimović",
+        "zanr_naziv": "Roman",
+        "godina": 1966,
+        "opis": "Filozofski roman o prirodi moći, pravde i smrti.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Tvrđava",
+        "autor_ime": "Meša",
+        "autor_prezime": "Selimović",
+        "zanr_naziv": "Roman",
+        "godina": 1970,
+        "opis": "Nastavak Derviša i smrti, roman o slobodi i zatvoru.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Sabirni centar",
+        "autor_ime": "Slavenka",
+        "autor_prezime": "Drakulić",
+        "zanr_naziv": "Roman",
+        "godina": 1989,
+        "opis": "Roman o ženama u logorima tokom rata.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Kako smo preživjeli",
+        "autor_ime": "Slavenka",
+        "autor_prezime": "Drakulić",
+        "zanr_naziv": "Esej",
+        "godina": 1992,
+        "opis": "Eseji o svakodnevnom životu za vrijeme rata.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Odmor od povijesti",
+        "autor_ime": "Slavenka",
+        "autor_prezime": "Drakulić",
+        "zanr_naziv": "Esej",
+        "godina": 1991,
+        "opis": "Eseji o politici i svakodnevnom životu.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Nevidljiva žena",
+        "autor_ime": "Slavenka",
+        "autor_prezime": "Drakulić",
+        "zanr_naziv": "Roman",
+        "godina": 2000,
+        "opis": "Roman o ženama na Balkanu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Žena iz New Yorka",
+        "autor_ime": "Slavenka",
+        "autor_prezime": "Drakulić",
+        "zanr_naziv": "Roman",
+        "godina": 2004,
+        "opis": "Roman o identitetu i migracijama.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Notturno",
+        "autor_ime": "Ranko",
+        "autor_prezime": "Marinković",
+        "zanr_naziv": "Drama",
+        "godina": 1953,
+        "opis": "Drama o umjetnosti i stvaralaštvu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Ojdip na Kolonu",
+        "autor_ime": "Ranko",
+        "autor_prezime": "Marinković",
+        "zanr_naziv": "Drama",
+        "godina": 1960,
+        "opis": "Moderna adaptacija grčke tragedije.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Legenda o svetom Marku",
+        "autor_ime": "Ranko",
+        "autor_prezime": "Marinković",
+        "zanr_naziv": "Drama",
+        "godina": 1964,
+        "opis": "Drama o svetosti i licemjerju.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Glorija",
+        "autor_ime": "Ranko",
+        "autor_prezime": "Marinković",
+        "zanr_naziv": "Drama",
+        "godina": 1955,
+        "opis": "Drama o glumici i njenom životu.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Molitva za progonjene",
+        "autor_ime": "Ivo",
+        "autor_prezime": "Andrić",
+        "zanr_naziv": "Priča",
+        "godina": 1948,
+        "opis": "Zbirka priča o stradanju.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Čudo u Poskokovoj Dragi",
+        "autor_ime": "Ivan",
+        "autor_prezime": "Aralica",
+        "zanr_naziv": "Roman",
+        "godina": 1978,
+        "opis": "Roman o životu u dalmatinskom zaleđu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Psi u trgovištu",
+        "autor_ime": "Ivan",
+        "autor_prezime": "Aralica",
+        "zanr_naziv": "Roman",
+        "godina": 1968,
+        "opis": "Roman o političkim borbama.",
+        "kolicina": 2
+    },
+    {
+        "naslov": "Katedrala",
+        "autor_ime": "Janko",
+        "autor_prezime": "Leskovar",
+        "zanr_naziv": "Roman",
+        "godina": 1985,
+        "opis": "Roman o obiteljskim tajnama.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Noć u Lisabonu",
+        "autor_ime": "Erich Maria",
+        "autor_prezime": "Remarque",
+        "zanr_naziv": "Roman",
+        "godina": 1962,
+        "opis": "Roman o bjeguncima iz nacističke Njemačke.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Na zapadu ništa novo",
+        "autor_ime": "Erich Maria",
+        "autor_prezime": "Remarque",
+        "zanr_naziv": "Roman",
+        "godina": 1929,
+        "opis": "Roman o Prvom svjetskom ratu.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Stranac",
+        "autor_ime": "Albert",
+        "autor_prezime": "Camus",
+        "zanr_naziv": "Roman",
+        "godina": 1942,
+        "opis": "Filozofski roman o apsurdu i egzistenciji.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Kuga",
+        "autor_ime": "Albert",
+        "autor_prezime": "Camus",
+        "zanr_naziv": "Roman",
+        "godina": 1947,
+        "opis": "Roman o epidemiji kuge i ljudskoj solidarnosti.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Zločin i kazna",
+        "autor_ime": "Fjodor",
+        "autor_prezime": "Dostojevski",
+        "zanr_naziv": "Roman",
+        "godina": 1866,
+        "opis": "Roman o moralnosti i iskupljenju.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Braća Karamazovi",
+        "autor_ime": "Fjodor",
+        "autor_prezime": "Dostojevski",
+        "zanr_naziv": "Roman",
+        "godina": 1880,
+        "opis": "Posljednji roman Dostojevskog o vjeri, slobodi i zlu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Ana Karenjina",
+        "autor_ime": "Lav",
+        "autor_prezime": "Tolstoj",
+        "zanr_naziv": "Roman",
+        "godina": 1877,
+        "opis": "Roman o ljubavi, braku i društvu.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Rat i mir",
+        "autor_ime": "Lav",
+        "autor_prezime": "Tolstoj",
+        "zanr_naziv": "Roman",
+        "godina": 1869,
+        "opis": "Epopeja o Napoleonovoj invaziji na Rusiju.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Sto godina samoće",
+        "autor_ime": "Gabriel García",
+        "autor_prezime": "Márquez",
+        "zanr_naziv": "Roman",
+        "godina": 1967,
+        "opis": "Remek-djelo magijskog realizma.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Ljubav u doba kolere",
+        "autor_ime": "Gabriel García",
+        "autor_prezime": "Márquez",
+        "zanr_naziv": "Roman",
+        "godina": 1985,
+        "opis": "Roman o ljubavi koja traje pola stoljeća.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Mali princ",
+        "autor_ime": "Antoine de",
+        "autor_prezime": "Saint-Exupéry",
+        "zanr_naziv": "Priča",
+        "godina": 1943,
+        "opis": "Filozofska priča o prijateljstvu i ljubavi.",
+        "kolicina": 6
+    },
+    {
+        "naslov": "Alkemist",
+        "autor_ime": "Paulo",
+        "autor_prezime": "Coelho",
+        "zanr_naziv": "Roman",
+        "godina": 1988,
+        "opis": "Roman o putovanju i pronalaženju vlastite sudbine.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Vještina",
+        "autor_ime": "Paulo",
+        "autor_prezime": "Coelho",
+        "zanr_naziv": "Roman",
+        "godina": 1990,
+        "opis": "Roman o ženskoj slobodi.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Dnevnik jedne ljubavi",
+        "autor_ime": "Milan",
+        "autor_prezime": "Kundera",
+        "zanr_naziv": "Roman",
+        "godina": 1984,
+        "opis": "Filozofski roman o ljubavi i identitetu.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Nepodnošljiva lakoća postojanja",
+        "autor_ime": "Milan",
+        "autor_prezime": "Kundera",
+        "zanr_naziv": "Roman",
+        "godina": 1984,
+        "opis": "Roman o ljubavi, politici i postojanju.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Hladnokrvno",
+        "autor_ime": "Truman",
+        "autor_prezime": "Capote",
+        "zanr_naziv": "Dokumentarni roman",
+        "godina": 1966,
+        "opis": "Istiniti roman o ubojstvu obitelji Clutter.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Doručak kod Tiffanyja",
+        "autor_ime": "Truman",
+        "autor_prezime": "Capote",
+        "zanr_naziv": "Priča",
+        "godina": 1958,
+        "opis": "Priča o Holly Golightly.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Veliki Gatsby",
+        "autor_ime": "F. Scott",
+        "autor_prezime": "Fitzgerald",
+        "zanr_naziv": "Roman",
+        "godina": 1925,
+        "opis": "Roman o američkom snu i bogatstvu.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Ubiti pticu rugalicu",
+        "autor_ime": "Harper",
+        "autor_prezime": "Lee",
+        "zanr_naziv": "Roman",
+        "godina": 1960,
+        "opis": "Roman o rasizmu i nepravdi na američkom jugu.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "1984",
+        "autor_ime": "George",
+        "autor_prezime": "Orwell",
+        "zanr_naziv": "Roman",
+        "godina": 1949,
+        "opis": "Distopijski roman o totalitarizmu.",
+        "kolicina": 6
+    },
+    {
+        "naslov": "Životinjska farma",
+        "autor_ime": "George",
+        "autor_prezime": "Orwell",
+        "zanr_naziv": "Roman",
+        "godina": 1945,
+        "opis": "Alegorija o Ruskoj revoluciji.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Proces",
+        "autor_ime": "Franz",
+        "autor_prezime": "Kafka",
+        "zanr_naziv": "Roman",
+        "godina": 1925,
+        "opis": "Roman o apsurdnosti birokratskog sustava.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Preobražaj",
+        "autor_ime": "Franz",
+        "autor_prezime": "Kafka",
+        "zanr_naziv": "Priča",
+        "godina": 1915,
+        "opis": "Priča o Gregoriji Samsi koji se pretvorio u bubu.",
+        "kolicina": 5
+    },
+    {
+        "naslov": "Gospodar muha",
+        "autor_ime": "William",
+        "autor_prezime": "Golding",
+        "zanr_naziv": "Roman",
+        "godina": 1954,
+        "opis": "Roman o dječacima nasukanim na pustom otoku.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Fahrenheit 451",
+        "autor_ime": "Ray",
+        "autor_prezime": "Bradbury",
+        "zanr_naziv": "Roman",
+        "godina": 1953,
+        "opis": "Distopijski roman o spaljivanju knjiga.",
+        "kolicina": 4
+    },
+    {
+        "naslov": "Jadnici",
+        "autor_ime": "Victor",
+        "autor_prezime": "Hugo",
+        "zanr_naziv": "Roman",
+        "godina": 1862,
+        "opis": "Roman o pravdi, ljubavi i revoluciji.",
+        "kolicina": 3
+    },
+    {
+        "naslov": "Zvonar crkve Notre Dame",
+        "autor_ime": "Victor",
+        "autor_prezime": "Hugo",
+        "zanr_naziv": "Roman",
+        "godina": 1831,
+        "opis": "Roman o ljepoti, ružnoći i predrasudama.",
+        "kolicina": 0
+    }
+]

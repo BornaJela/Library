@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popis knjiga</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--navigacija, prvo navbar za text boju i tekst a onda za linkove staviti ?-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'popis_knjiga' %}">Knjižnica</a>
+            <div class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <span class="nav-link text-light">Pozdrav, {{ user.username }}</span>
+                    <a class="nav-link" href="{% url 'moje_posudbe' %}">Moje posudbe</a>
+                    {% if user.is_staff %}
+                        <a class="nav-link" href="{% url 'dodaj_knjigu' %}">Dodaj knjigu</a>
+                        <a class="nav-link" href="{% url 'statistika' %}">Statistika</a>
+                    {% endif %}
+                    <form method="post" action="{% url 'logout' %}" class="d-inline">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-light btn-sm my-2" type="submit">Odjava</button>
+                    </form>
+                {% else %}
+                    <a class="nav-link" href="{% url 'login' %}">Prijava</a>
+                    <a class="nav-link" href="{% url 'registracija' %}">Registracija</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <!--filtriranje knjiga po stavkama-->
+    <div class="container mt-4">
+        <h1 class="mb-3">Popis svih knjiga</h1>
+        <div class="card mb-2">
+            <div class="card-body">
+                <form method="get" class="row g-6">
+                    <div class="col-md-3">
+                        <label class="form-label">Autor:</label>
+                        <select name="autor" class="form-select">
+                            <option value="">Svi autori</option>
+                            {% for autor in autori %}
+                                <option value="{{ autor.id }}">{{ autor.ime }} {{ autor.prezime }}</option>
+                            {% endfor %}
+                        </select>   
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Žanr:</label>
+                        <select name="zanr" class="form-select">
+                            <option value="">Svi žanrovi</option>
+                            {% for z in zanrovi %}
+                                <option value="{{ z.id }}">{{ z.zanr }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label">Stanje:</label>
+                        <select name="stanje" class="form-select">
+                            <option value="">Sve knjige</option>
+                            <option value="dostupno">Samo dostupne</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3 d-flex align-items-end">
+                        <div>
+                            <button type="submit" class="btn btn-primary">Filtriraj</button>
+                            <a href="." class="btn btn-secondary">Poništi</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            {% for k in knjige %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ k.naslov }}</h5>
+                        <p class="card-text">
+                            <strong>Autor:</strong> {{ k.autor.ime }} {{ k.autor.prezime }}<br>
+                            <strong>Žanr:</strong> {{ k.zanr.zanr }}<br>
+                            <strong>Godina:</strong> {{ k.godina }}<br>
+                            <strong>Količina:</strong> 
+                            {% if k.kolicina > 0 %}
+                                {{ k.kolicina }} kom.</span>
+                            {% else %}
+                                <span class="text-danger">Nedostupno</span>
+                            {% endif %}
+                        </p>
+                        <p class="card-text"><small class="text-muted">{{ k.opis|truncatewords:30 }}</small></p>
+                        
+                        {% if user.is_authenticated %}
+                            {% if k.kolicina > 0 %}
+                                <a href="{% url 'posudi_knjigu' k.id %}" class="btn btn-success btn-sm">Posudi</a>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Nedostupno</button>
+                            {% endif %}
+                        {% endif %}
+                        
+                        {% if user.is_staff %}
+                            <a href="{% url 'uredi_knjigu' k.id %}" class="btn btn-warning btn-sm">Uredi</a>
+                            <a href="{% url 'obrisi_knjigu' k.id %}" class="btn btn-danger btn-sm">Obriši</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <div class="alert alert-info">Nema knjiga koje odgovaraju filterima.</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

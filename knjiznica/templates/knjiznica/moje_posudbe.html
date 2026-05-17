@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje posudbe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'popis_knjiga' %}">Knjižnica</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{% url 'popis_knjiga' %}">← Natrag na knjige</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Moje posudbe</h1>
+        
+        <h2 class="mt-4">Trenutno posuđene knjige</h2>
+        {% if aktivne_posudbe %}
+            <div class="row">
+            {% for posudba in aktivne_posudbe %}
+                <div class="col-md-6 mb-3 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ posudba.knjiga.naslov }}</h5>
+                            <p class="card-text">
+                                <strong>Autor:</strong> {{ posudba.knjiga.autor.ime }} {{ posudba.knjiga.autor.prezime }}<br>
+                                <strong>Datum posudbe:</strong> {{ posudba.datum_posudbe|date:"d.m.Y. H:i" }}
+                            </p>
+                            <a href="{% url 'vrati_knjigu' posudba.id %}" class="btn btn-primary">Vrati knjigu</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">Trenutno nemate posuđenih knjiga.</div>
+        {% endif %}
+        
+        <h2 class="mt-4">Povijest posudbi</h2>
+        {% if povijest_posudbi %}
+            <div class="list-group">
+            {% for posudba in povijest_posudbi %}
+                <div class="list-group-item">
+                    <strong>{{ posudba.knjiga.naslov }}</strong><br>
+                    Posuđeno: {{ posudba.datum_posudbe|date:"d.m.Y." }} | 
+                    Vraćeno: {{ posudba.datum_povrata|date:"d.m.Y." }}
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-secondary">Nemate povijest posudbi.</div>
+        {% endif %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
