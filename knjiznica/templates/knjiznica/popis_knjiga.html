@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,6 +80,10 @@
             {% for k in knjige %}
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100">
+                    <img src="{% static 'slike/'|add:k.id|add:'.jpg'%}"
+                    class ="card-img-top"
+                    alt="{{k.naslov}}"
+                    style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">{{ k.naslov }}</h5>
                         <p class="card-text">
@@ -91,6 +96,7 @@
                             {% else %}
                                 <span class="text-danger">Nedostupno</span>
                             {% endif %}
+                            <small class="text-muted">ID: {{ k.id }}</small>
                         </p>
                         <p class="card-text"><small class="text-muted">{{ k.opis|truncatewords:30 }}</small></p>
                         
