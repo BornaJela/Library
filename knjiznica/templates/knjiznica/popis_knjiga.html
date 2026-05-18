@@ -77,45 +77,46 @@
             </div>
         </div>
         <div class="row">
-            {% for k in knjige %}
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
-                    <img src="{% static 'slike/'|add:k.id|add:'.jpg'%}"
-                    class ="card-img-top"
-                    alt="{{k.naslov}}"
-                    style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ k.naslov }}</h5>
-                        <p class="card-text">
-                            <strong>Autor:</strong> {{ k.autor.ime }} {{ k.autor.prezime }}<br>
-                            <strong>Žanr:</strong> {{ k.zanr.zanr }}<br>
-                            <strong>Godina:</strong> {{ k.godina }}<br>
-                            <strong>Količina:</strong> 
-                            {% if k.kolicina > 0 %}
-                                {{ k.kolicina }} kom.</span>
-                            {% else %}
-                                <span class="text-danger">Nedostupno</span>
-                            {% endif %}
-                            <small class="text-muted">ID: {{ k.id }}</small>
-                        </p>
-                        <p class="card-text"><small class="text-muted">{{ k.opis|truncatewords:30 }}</small></p>
-                        
-                        {% if user.is_authenticated %}
-                            {% if k.kolicina > 0 %}
-                                <a href="{% url 'posudi_knjigu' k.id %}" class="btn btn-success btn-sm">Posudi</a>
-                            {% else %}
-                                <button class="btn btn-secondary btn-sm" disabled>Nedostupno</button>
-                            {% endif %}
+{% for k in knjige %}
+<div class="col-md-4 mb-3">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="d-flex gap-3">
+                <img src="{% static 'slike/' %}{{ k.id }}.jpg"
+                     alt="{{ k.naslov }}"
+                     style="width: 80px; height: 110px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
+                <div>
+                    <h6 class="card-title mb-1">{{ k.naslov }}</h6>
+                    <small>
+                        <strong>Autor:</strong> {{ k.autor.ime }} {{ k.autor.prezime }}<br>
+                        <strong>Žanr:</strong> {{ k.zanr.zanr }}<br>
+                        <strong>Godina:</strong> {{ k.godina }}<br>
+                        {% if k.kolicina > 0 %}
+                            <span class="text-success">Dostupno: {{ k.kolicina }} kom.</span>
+                        {% else %}
+                            <span class="text-danger">Nedostupno</span>
                         {% endif %}
-                        
-                        {% if user.is_staff %}
-                            <a href="{% url 'uredi_knjigu' k.id %}" class="btn btn-warning btn-sm">Uredi</a>
-                            <a href="{% url 'obrisi_knjigu' k.id %}" class="btn btn-danger btn-sm">Obriši</a>
-                        {% endif %}
-                    </div>
+                    </small>
                 </div>
             </div>
-            {% empty %}
+            <p class="card-text mt-2"><small class="text-muted">{{ k.opis|truncatewords:20 }}</small></p>
+            <div class="mt-2">
+                {% if user.is_authenticated %}
+                    {% if k.kolicina > 0 %}
+                        <a href="{% url 'posudi_knjigu' k.id %}" class="btn btn-success btn-sm">Posudi</a>
+                    {% else %}
+                        <button class="btn btn-secondary btn-sm" disabled>Nedostupno</button>
+                    {% endif %}
+                {% endif %}
+                {% if user.is_staff %}
+                    <a href="{% url 'uredi_knjigu' k.id %}" class="btn btn-warning btn-sm">Uredi</a>
+                    <a href="{% url 'obrisi_knjigu' k.id %}" class="btn btn-danger btn-sm">Obriši</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% empty %}
             <div class="col">
                 <div class="alert alert-info">Nema knjiga koje odgovaraju filterima.</div>
             </div>
