@@ -34,29 +34,19 @@
                                 <label class="form-label">Korisničko ime</label>
                                 {{ form.username }}
                                 <div class="help-text">{{ form.username.help_text }}</div>
-                                {% if form.username.errors %}
-                                    <div class="text-danger small">{{ form.username.errors }}</div>
-                                {% endif %}
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Lozinka</label>
                                 {{ form.password1 }}
                                 <div class="help-text">{{ form.password1.help_text }}</div>
-                                {% if form.password1.errors %}
-                                    <div class="text-danger small">{{ form.password1.errors }}</div>
-                                {% endif %}
                             </div>
                             
-                            <div class="mb-3">
+                            <div class="mb-3">  
                                 <label class="form-label">Potvrda lozinke</label>
                                 {{ form.password2 }}
                                 <div class="help-text">{{ form.password2.help_text }}</div>
-                                {% if form.password2.errors %}
-                                    <div class="text-danger small">{{ form.password2.errors }}</div>
-                                {% endif %}
                             </div>
-                            
                             <button type="submit" class="btn btn-primary w-100">Registriraj se</button>
                         </form>
                         

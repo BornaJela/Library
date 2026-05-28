@@ -9,12 +9,12 @@
 </head>
 <body>
     <!--navigacija, prvo navbar za text boju i tekst a onda za linkove staviti ?-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand" href="{% url 'popis_knjiga' %}">Knjižnica</a>
             <div class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
-                    <span class="nav-link text-light">Pozdrav, {{ user.username }}</span>
+                    <span class="nav-link text-light">Pozdrav, {{ user.username }}!</span>
                     <a class="nav-link" href="{% url 'moje_posudbe' %}">Moje posudbe</a>
                     {% if user.is_staff %}
                         <a class="nav-link" href="{% url 'dodaj_knjigu' %}">Dodaj knjigu</a>
@@ -34,7 +34,7 @@
             </div>
         </div>
     </nav>
-    <!--filtriranje knjiga po stavkama-->
+    <!--filtriranje knjiga po stavkama, 3 filtera nek budu-->
     <div class="container mt-4">
         <h1 class="mb-3">Popis svih knjiga</h1>
         <div class="card mb-2">

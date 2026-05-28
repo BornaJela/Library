@@ -7,7 +7,6 @@ def ucitaj_knjige():
     sadrzaj=f.read()
     f.close()
     knjige=json.loads(sadrzaj)
-    dodano=0
     for podaci in knjige:
         autor,_=Autor.objects.get_or_create(
             ime=podaci['autor_ime'],
@@ -26,7 +25,5 @@ def ucitaj_knjige():
                 'kolicina':podaci['kolicina']
             }
         )
-        if created:
-            dodano+=1
 if __name__=='__main__':
     ucitaj_knjige()

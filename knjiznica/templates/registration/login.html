@@ -16,7 +16,14 @@
                     <div class="card-body">
                         <form method="post">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            <p>
+                                <label>Username:</label>
+                                {{ form.username }}
+                            </p>
+                            <p>
+                                <label>Lozinka:</label>
+                                {{ form.password }}
+                            </p>
                             <button type="submit" class="btn btn-primary w-100">Prijavi se</button>
                         </form>
                         <hr>

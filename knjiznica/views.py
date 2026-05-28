@@ -37,7 +37,7 @@ def registracija(request):
     return render(request,'knjiznica/registracija.html',{'form':form})
 def is_admin(user):
     return user.is_staff
-@login_required
+@login_required #dekoratori
 @user_passes_test(is_admin)
 def dodaj_knjigu(request):
     if request.method=='POST':
@@ -102,7 +102,7 @@ def moje_posudbe(request):
     povijest_posudbi=Posudba.objects.filter(
         korisnik=request.user,
         je_vraceno=True
-    ).select_related('knjiga')[:20]
+    ).select_related('knjiga')
     return render(request,'knjiznica/moje_posudbe.html',{
         'aktivne_posudbe':aktivne_posudbe,'povijest_posudbi':povijest_posudbi,
     })
@@ -120,11 +120,10 @@ def statistika(request):
     rezultat=Knjiga.objects.aggregate(Sum('puta_posudjena'))
     ukupno_posudbi=rezultat['puta_posudjena__sum'] or 0
     trenutno_posudjeno=Posudba.objects.filter(je_vraceno=False).count()
-    context={
+    return render(request,'knjiznica/statistika.html',{
         'najposudjenije':najposudjenije,
         'najpopularniji_autori':najpopularniji_autori,
         'ukupno_knjiga':ukupno_knjiga,
         'ukupno_posudbi': ukupno_posudbi,
         'trenutno_posudjeno': trenutno_posudjeno,
-    }
-    return render(request,'knjiznica/statistika.html',context)
+    })
