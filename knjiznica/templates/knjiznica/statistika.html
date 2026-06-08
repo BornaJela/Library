@@ -1,98 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistika knjižnice</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'popis_knjiga' %}"> Knjižnica</a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{% url 'popis_knjiga' %}">← Natrag na knjige</a>
-            </div>
-        </div>
-    </nav>
+{% extends "knjiznica/popis_knjiga.html" %}
+{% block content %}
+<h2>Statistika</h2>
 
-    <div class="container mt-4">
-        <h1>Statistika knjižnice</h1>
-        
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Ukupno knjiga</h5>
-                        <h3 class="text-primary">{{ ukupno_knjiga }}</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Ukupno posudbi</h5>
-                        <h3 class="text-success">{{ ukupno_posudbi }}</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Trenutno posuđeno</h5>
-                        <h3 class="text-warning">{{ trenutno_posudjeno }}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Najposuđenije knjige</h5>
-                    </div>
-                    <div class="card-body">
-                        {% if najposudjenije %}
-                            <ol class="list-group list-group-numbered">
-                            {% for knjiga in najposudjenije %}
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">{{ knjiga.naslov }}</div>
-                                    <span class="badge bg-primary">{{ knjiga.puta_posudjena }} posudbi</span>
-                                </li>
-                            {% endfor %}
-                            </ol>
-                        {% else %}
-                            <p class="text-muted">Nema podataka o posudbama.</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Najpopularniji autori</h5>
-                    </div>
-                    <div class="card-body">
-                        {% if najpopularniji_autori %}
-                            <ol class="list-group list-group-numbered">
-                            {% for autor in najpopularniji_autori %}
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">{{ autor.ime }} {{ autor.prezime }}</div>
-                                    <span class="badge bg-success">{{ autor.ukupno_posudbi|default:0 }} posudbi</span>
-                                </li>
-                            {% endfor %}
-                            </ol>
-                        {% else %}
-                            <p class="text-muted">Nema podataka o autorima.</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+    <h3>Opće informacije</h3>
+    <p>Ukupan broj knjiga (artikala): <strong>{{ ukupno_knjiga }}</strong></p>
+    <p>Ukupan broj žanrova (kategorija): <strong>{{ ukupno_zanrova }}</strong></p>
+    <p>Ukupan broj autora: <strong>{{ ukupno_autora }}</strong></p>
+    <p>Ukupan broj registriranih korisnika: <strong>{{ ukupno_korisnika }}</strong></p>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <p>Žanr s najvećim brojem knjiga: 
+        {{ zanr_s_najvise.zanr }}
+        ({{ zanr_s_najvise.broj_knjiga }} knjiga)
+    </p>
+</div>
+
+<hr>
+
+<p>Ukupno posudbi: <strong>{{ ukupno_posudbi }}</strong></p>
+<p>Trenutno posuđeno: <strong>{{ trenutno_posudjeno }}</strong></p>
+
+<h3>Najposuđenije knjige</h3>
+<ul>
+{% for knjiga in najposudjenije %}
+    <li>{{ knjiga.naslov }} — {{ knjiga.puta_posudjena }}x</li>
+{% endfor %}
+</ul>
+
+<h3>Najpopularniji autori</h3>
+<ul>
+{% for autor in najpopularniji_autori %}
+    <li>{{ autor.ime }} {{ autor.prezime }} — {{ autor.ukupno_posudbi|default:0 }} posudbi</li>
+{% endfor %}
+</ul>
+{% endblock %}

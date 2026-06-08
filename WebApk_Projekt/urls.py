@@ -30,4 +30,5 @@ urlpatterns = [
     path('vrati/<int:id>/',views.vrati_knjigu,name="vrati_knjigu"),
     path('moje-posudbe/',views.moje_posudbe,name="moje_posudbe"),
     path('statistika/',views.statistika,name="statistika"),
+    path('korisnici/',views.upravljanje_korisnicima,name="upravljanje_korisnicima"),
 ]

@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <!--navigacija, prvo navbar za text boju i tekst a onda za linkove staviti ?-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand" href="{% url 'popis_knjiga' %}">Knjižnica</a>
@@ -19,10 +18,8 @@
                     {% if user.is_staff %}
                         <a class="nav-link" href="{% url 'dodaj_knjigu' %}">Dodaj knjigu</a>
                         <a class="nav-link" href="{% url 'statistika' %}">Statistika</a>
+                        <a class="nav-link" href="{% url 'upravljanje_korisnicima' %}">Korisnici</a>
                     {% endif %}
-                    {% if user.profile.je_zaposlenik %}
-                        <a class="nav-link" href="{% url 'statistika' %}">Statistika</a>
-                    {%endif%}
                     <form method="post" action="{% url 'logout' %}" class="d-inline">
                         {% csrf_token %}
                         <button class="btn btn-outline-light btn-sm my-2" type="submit">Odjava</button>
@@ -34,7 +31,8 @@
             </div>
         </div>
     </nav>
-    <!--filtriranje knjiga po stavkama, 3 filtera nek budu-->
+    
+    {% block content %}
     <div class="container mt-4">
         <div class="card mb-2">
             <div class="card-body">
@@ -76,52 +74,54 @@
             </div>
         </div>
         <div class="row">
-{% for k in knjige %}
-<div class="col-md-4 mb-3">
-    <div class="card h-100">
-        <div class="card-body">
-            <div class="d-flex gap-3">
-                <img src="{% static 'slike/' %}{{ k.id }}.jpg"
-                     alt="{{ k.naslov }}"
-                     style="width: 80px; height: 110px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
-                <div>
-                    <h6 class="card-title mb-1">{{ k.naslov }}</h6>
-                    <small>
-                        <strong>Autor:</strong> {{ k.autor.ime }} {{ k.autor.prezime }}<br>
-                        <strong>Žanr:</strong> {{ k.zanr.zanr }}<br>
-                        <strong>Godina:</strong> {{ k.godina }}<br>
-                        {% if k.kolicina > 0 %}
-                            <span class="text-success">Dostupno: {{ k.kolicina }} kom.</span>
-                        {% else %}
-                            <span class="text-danger">Nedostupno</span>
-                        {% endif %}
-                    </small>
+            {% for k in knjige %}
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex gap-3">
+                            <img src="{% static 'slike/' %}{{ k.id }}.jpg"
+                                 alt="{{ k.naslov }}"
+                                 style="width: 80px; height: 110px; object-fit: cover; border-radius: 4px; flex-shrink: 0;">
+                            <div>
+                                <h6 class="card-title mb-1">{{ k.naslov }}</h6>
+                                <small>
+                                    <strong>Autor:</strong> {{ k.autor.ime }} {{ k.autor.prezime }}<br>
+                                    <strong>Žanr:</strong> {{ k.zanr.zanr }}<br>
+                                    <strong>Godina:</strong> {{ k.godina }}<br>
+                                    {% if k.kolicina > 0 %}
+                                        <span class="text-success">Dostupno: {{ k.kolicina }} kom.</span>
+                                    {% else %}
+                                        <span class="text-danger">Nedostupno</span>
+                                    {% endif %}
+                                </small>
+                            </div>
+                        </div>
+                        <p class="card-text mt-2"><small class="text-muted">{{ k.opis|truncatewords:20 }}</small></p>
+                        <div class="mt-2">
+                            {% if user.is_authenticated %}
+                                {% if k.kolicina > 0 %}
+                                    <a href="{% url 'posudi_knjigu' k.id %}" class="btn btn-success btn-sm">Posudi</a>
+                                {% else %}
+                                    <button class="btn btn-secondary btn-sm" disabled>Nedostupno</button>
+                                {% endif %}
+                            {% endif %}
+                            {% if user.is_staff %}
+                                <a href="{% url 'uredi_knjigu' k.id %}" class="btn btn-warning btn-sm">Uredi</a>
+                                <a href="{% url 'obrisi_knjigu' k.id %}" class="btn btn-danger btn-sm">Obriši</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="card-text mt-2"><small class="text-muted">{{ k.opis|truncatewords:20 }}</small></p>
-            <div class="mt-2">
-                {% if user.is_authenticated %}
-                    {% if k.kolicina > 0 %}
-                        <a href="{% url 'posudi_knjigu' k.id %}" class="btn btn-success btn-sm">Posudi</a>
-                    {% else %}
-                        <button class="btn btn-secondary btn-sm" disabled>Nedostupno</button>
-                    {% endif %}
-                {% endif %}
-                {% if user.is_staff %}
-                    <a href="{% url 'uredi_knjigu' k.id %}" class="btn btn-warning btn-sm">Uredi</a>
-                    <a href="{% url 'obrisi_knjigu' k.id %}" class="btn btn-danger btn-sm">Obriši</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
-{% empty %}
+            {% empty %}
             <div class="col">
                 <div class="alert alert-info">Nema knjiga koje odgovaraju filterima.</div>
             </div>
             {% endfor %}
         </div>
     </div>
+    {% endblock %}
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

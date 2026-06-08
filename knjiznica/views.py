@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from .models import Knjiga,Autor,Zanr,Posudba
 from django.utils import timezone   
 from .forms import KnjigaForm
-from django.db.models import Sum
+from django.db.models import Sum,Count
+from django.contrib.auth.models import User
 def popis_knjiga(request):
     knjige=Knjiga.objects.all()
     autori=Autor.objects.all()
@@ -110,7 +111,7 @@ def is_zaposlenik(user):
     return user.is_authenticated and (
         user.is_staff or user.profile.je_zaposlenik)
 @login_required
-@user_passes_test(is_zaposlenik)
+@user_passes_test(is_admin)
 def statistika(request):
     najposudjenije=Knjiga.objects.order_by('-puta_posudjena')[:3]
     najpopularniji_autori=Autor.objects.annotate(
@@ -119,10 +120,36 @@ def statistika(request):
     rezultat=Knjiga.objects.aggregate(Sum('puta_posudjena'))
     ukupno_posudbi=rezultat['puta_posudjena__sum'] or 0
     trenutno_posudjeno=Posudba.objects.filter(je_vraceno=False).count()
+    ukupno_zanrova=Zanr.objects.count()
+    ukupno_autora=Autor.objects.count()
+    ukupno_korisnika=User.objects.count()
+    zanr_s_najvise=Zanr.objects.annotate(
+        broj_knjiga=Count('knjiga')
+    ).order_by('-broj_knjiga').first()
     return render(request,'knjiznica/statistika.html',{
         'najposudjenije':najposudjenije,
         'najpopularniji_autori':najpopularniji_autori,
         'ukupno_knjiga':ukupno_knjiga,
         'ukupno_posudbi': ukupno_posudbi,
         'trenutno_posudjeno': trenutno_posudjeno,
+        'ukupno_zanrova': ukupno_zanrova,
+        'ukupno_autora': ukupno_autora,
+        'ukupno_korisnika': ukupno_korisnika,
+        'zanr_s_najvise': zanr_s_najvise,
+    })
+@login_required
+@user_passes_test(is_admin)
+def upravljanje_korisnicima(request):
+    uloga=request.GET.get('uloga','')
+    korisnici=User.objects.all()
+    if uloga=='admin':
+        korisnici=korisnici.filter(is_staff=True)
+    elif uloga=='zaposlenik':
+        korisnici=korisnici.filter(is_staff=False, profile__je_zaposlenik=True)
+    elif uloga=='korisnik':
+        korisnici=korisnici.filter(is_staff=False, profile__je_zaposlenik=False)
+
+    return render(request,'knjiznica/upravljanje_korisnicima.html',{
+        'korisnici': korisnici,
+        'odabrana_uloga': uloga,
     })
